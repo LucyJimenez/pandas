@@ -145,9 +145,6 @@ jobs:
         git fetch upstream
         asv machine --yes
         asv dev | sed "/failed$/ s/^/##[error_lu]/" | tee benchmarks.log
-        if grep "failed" benchmarks.log > /dev/null ; then
-            exit 1
-        fi
       if: ${{ steps.build.outcome == 'success' }}
 
     - name: Publish benchmarks artifact
